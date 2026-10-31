@@ -1,29 +1,16 @@
-# Turappen – React-prototype
+# React + Vite
 
-## Beskrivelse
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-Jeg har laget en prototype av Turappen ved hjelp av React og CSS. Formålet er å vise hvordan en nettside for hytter kan se ut.
+Currently, two official plugins are available:
 
-På nettsiden vises forskjellige hytter med bilder, navn, sted og pris. Jeg har jobbet med utformingen av brukergrensesnittet for å gjøre informasjonen enkel å finne og oversiktlig for brukeren.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Teknologier
+## React Compiler
 
-Jeg har brukt React for å bygge brukergrensesnittet, JavaScript for å vise informasjon om hyttene og CSS for å tilpasse utseendet på nettsiden.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-Prosjektet er satt opp med Vite.
+## Expanding the Oxlint configuration
 
-## Testing
-
-Jeg har testet React-siden i nettleseren og kontrollert at hyttene vises med bilder, navn, sted og pris.
-
-Jeg har også kontrollert hvordan nettsiden ser ut, og at innholdet vises på en oversiktlig måte.
-
-## Hvordan kjøre prosjektet
-
-1. Åpne prosjektmappen `Arbeidskrav4-Turapp` i VS Code.
-2. Åpne terminalen.
-3. Kjør `npm install`.
-4. Kjør `npm run dev`.
-5. Åpne adressen som vises i terminalen.
-
-Da kan React-prototypen åpnes i nettleseren.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.

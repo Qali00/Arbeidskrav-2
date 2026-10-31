@@ -1,121 +1,145 @@
 
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-  useParams
-} from "react-router-dom";
-
-import fjellBilde from "./assets/fjellhytta.jpg";
-import skogBilde from "./assets/skoghytta.jpg";
-import sjoBilde from "./assets/sjøhytta.jpg";
+import { BrowserRouter, Routes, Route, Link, useParams } from "react-router-dom";
 import "./App.css";
 
 const hytter = [
   {
-    id: 1,
+    id: "1",
     navn: "Fjellhytta",
     sted: "Geilo",
     pris: 1200,
-    bilde: fjellBilde
+    personer: 8,
+    beskrivelse: "En koselig hytte med flott utsikt over fjellene. Perfekt for familie og venner som ønsker en tur nær naturen.",
+    fasiliteter: ["Kjøkken", "Bad", "WiFi", "Peis"],
+    bilde: "fjell"
   },
   {
-    id: 2,
+    id: "2",
     navn: "Skogshytta",
     sted: "Telemark",
     pris: 900,
-    bilde: skogBilde
+    personer: 5,
+    beskrivelse: "En rolig hytte omgitt av skog. Her kan du nyte naturen, gå turer og slappe av.",
+    fasiliteter: ["Kjøkken", "Peis", "Parkering"],
+    bilde: "skog"
   },
   {
-    id: 3,
+    id: "3",
     navn: "Sjøhytta",
     sted: "Kragerø",
     pris: 1500,
-    bilde: sjoBilde
+    personer: 6,
+    beskrivelse: "En hyggelig hytte nær sjøen. Perfekt for deg som liker bading, fiske og fine dager ved kysten.",
+    fasiliteter: ["Kjøkken", "Bad", "WiFi", "Terrasse"],
+    bilde: "sjo"
   }
 ];
 
 function Forside() {
   return (
-    <div>
-      <h1>Velkommen til Turappen</h1>
-      <p>Finn en hytte til din neste tur!</p>
-      <h2>Våre hytter</h2>
-
-      {hytter.map((hytte) => (
-        <div key={hytte.id} style={{ marginBottom: "30px" }}>
-          <h3>{hytte.navn}</h3>
-
-          <img
-            src={hytte.bilde}
-            alt={hytte.navn}
-            style={{
-              width: "350px",
-              maxWidth: "100%",
-              borderRadius: "10px"
-            }}
-          />
-
-          <p>Sted: {hytte.sted}</p>
-          <p>Pris: {hytte.pris} kr per natt</p>
-
-          <Link to={`/hytte/${hytte.id}`}>
-            Se detaljer
-          </Link>
+    <>
+      <section className="hero">
+        <div>
+          <p className="eyebrow">OPPLEV NORSK NATUR</p>
+          <h1>Finn din neste hyttetur</h1>
+          <p>Utforsk koselige hytter og finn det perfekte stedet for ditt neste eventyr.</p>
+          <a href="#hytter" className="hero-button">Se hyttene</a>
         </div>
-      ))}
-    </div>
+      </section>
+
+      <section className="hytteoversikt" id="hytter">
+        <div className="section-heading">
+          <p className="eyebrow">UTFORSK UTVALGET</p>
+          <h2>Våre hytter</h2>
+          <p>Finn en hytte som passer for deg og reisefølget ditt.</p>
+        </div>
+
+        <div className="hytte-grid">
+          {hytter.map((hytte) => (
+            <article className="hytte-kort" key={hytte.id}>
+              <div className={`hytte-bilde ${hytte.bilde}`}>
+                <span>⌂</span>
+              </div>
+              <div className="kort-innhold">
+                <p className="hytte-sted">{hytte.sted}</p>
+                <h3>{hytte.navn}</h3>
+                <p>{hytte.personer} personer</p>
+                <div className="kort-bunn">
+                  <p className="pris">{hytte.pris} kr <span>/ natt</span></p>
+                  <Link to={`/hytte/${hytte.id}`} className="detalj-knapp">
+                    Se detaljer
+                  </Link>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
 
 function HytteDetaljer() {
   const { id } = useParams();
-
-  const hytte = hytter.find(
-    (h) => h.id === Number(id)
-  );
+  const hytte = hytter.find((hytte) => hytte.id === id);
 
   if (!hytte) {
-    return <h1>Hytta finnes ikke</h1>;
+    return (
+      <main className="detaljside">
+        <h2>Fant ikke hytta</h2>
+        <Link to="/">Tilbake til forsiden</Link>
+      </main>
+    );
   }
 
   return (
-    <div>
-      <h1>{hytte.navn}</h1>
+    <main className="detaljside">
+      <Link to="/" className="tilbake-link">← Tilbake til alle hyttene</Link>
+      <div className={`detalj-bilde ${hytte.bilde}`}>⌂</div>
+      <div className="detalj-innhold">
+        <p className="hytte-sted">{hytte.sted}</p>
+        <h1>{hytte.navn}</h1>
+        <p>{hytte.beskrivelse}</p>
 
-      <img
-        src={hytte.bilde}
-        alt={hytte.navn}
-        style={{
-          width: "450px",
-          maxWidth: "100%",
-          borderRadius: "10px"
-        }}
-      />
+        <div className="detalj-fakta">
+          <div><strong>{hytte.personer}</strong><span>Personer</span></div>
+          <div><strong>{hytte.pris} kr</strong><span>Pris per natt</span></div>
+        </div>
 
-      <p>Sted: {hytte.sted}</p>
-      <p>Pris: {hytte.pris} kr per natt</p>
-
-      <Link to="/">Tilbake til forsiden</Link>
-    </div>
+        <h2>Fasiliteter</h2>
+        <ul className="fasiliteter">
+          {hytte.fasiliteter.map((fasilitet) => (
+            <li key={fasilitet}>✓ {fasilitet}</li>
+          ))}
+        </ul>
+        <p className="bestilling-info">
+          Ta kontakt med oss dersom du ønsker mer informasjon om hytta.
+        </p>
+      </div>
+    </main>
   );
 }
 
 function App() {
   return (
     <BrowserRouter>
+      <header className="navbar">
+        <Link to="/" className="logo">Tur<span>App</span></Link>
+        <nav>
+          <Link to="/">Hjem</Link>
+          <a href="/#hytter">Hytter</a>
+        </nav>
+      </header>
+
       <Routes>
         <Route path="/" element={<Forside />} />
-        <Route
-          path="/hytte/:id"
-          element={<HytteDetaljer />}
-        />
-        <Route
-          path="*"
-          element={<h1>Siden finnes ikke</h1>}
-        />
+        <Route path="/hytte/:id" element={<HytteDetaljer />} />
+        <Route path="*" element={<Forside />} />
       </Routes>
+
+      <footer className="footer">
+        <p>TurApp – Finn ditt neste eventyr i norsk natur.</p>
+      </footer>
     </BrowserRouter>
   );
 }

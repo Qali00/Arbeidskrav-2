@@ -1,184 +1,163 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  background: white;
+  box-shadow: 0 2px 12px rgba(31, 31, 31, 0.05);
+}
+
+.logo {
+  color: #92ceb5;
+  font-size: 1.7rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.logo span { color: #c47b42; }
+
+.navbar nav { display: flex; gap: 28px; }
+
+.navbar nav a {
+  color: #34483c;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
+  min-height: 390px;
+  display: flex;
+  align-items: center;
+  padding: 50px 8%;
+  background: linear-gradient(120deg, #315b45, #91a98e);
+  color: white;
 }
 
-#center {
-  display: flex;
-  flex-direction: column;
+.hero > div { max-width: 600px; }
+
+.eyebrow {
+  color: #c47b42;
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin: 12px 0; }
+
+.hero p { line-height: 1.7; }
+
+.hero-button {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 13px 24px;
+  background: #c47b42;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.hytteoversikt { padding: 65px 8%; }
+
+.section-heading { text-align: center; margin-bottom: 35px; }
+
+.section-heading h2 { font-size: 2.2rem; color: #234b3a; }
+
+.hytte-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
 }
 
-#next-steps {
+.hytte-kort {
+  overflow: hidden;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 22px rgba(0,0,0,.08);
+}
+
+.hytte-bilde, .detalj-bilde {
+  min-height: 190px;
   display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  color: white;
 }
 
-#docs {
-  border-right: 1px solid var(--border);
+.fjell { background: linear-gradient(145deg, #9bb9ae, #496b5a); }
+.skog { background: linear-gradient(145deg, #a5b58b, #3e6047); }
+.sjo { background: linear-gradient(145deg, #a6cbd0, #477f88); }
 
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
+.kort-innhold { padding: 22px; }
 
-#next-steps ul {
-  list-style: none;
-  padding: 0;
+.hytte-sted { color: #a36b3f; font-weight: 700; }
+
+.kort-innhold h3 { color: #234b3a; font-size: 1.4rem; }
+
+.kort-bunn {
   display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
+.pris { color: #234b3a; font-weight: 800; }
+.pris span { font-size: .8rem; font-weight: 400; }
+
+.detalj-knapp {
+  background: #234b3a;
+  color: white;
+  padding: 10px 14px;
+  text-decoration: none;
+  border-radius: 6px;
 }
 
-.ticks {
-  position: relative;
-  width: 100%;
+.detaljside { max-width: 900px; margin: 45px auto 70px; padding: 0 25px; }
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
+.tilbake-link {
+  display: inline-block;
+  color: #234b3a;
+  text-decoration: none;
+  font-weight: 700;
+  margin-bottom: 22px;
+}
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
+.detalj-bilde { min-height: 300px; border-radius: 12px; }
+
+.detalj-innhold { padding: 25px 0; }
+.detalj-innhold h1 { color: #234b3a; font-size: 2.5rem; }
+
+.detalj-innhold p { line-height: 1.8; }
+
+.detalj-fakta { display: flex; gap: 50px; margin: 30px 0; }
+
+.detalj-fakta div { display: flex; flex-direction: column; gap: 5px; }
+
+.detalj-fakta strong { color: #234b3a; font-size: 1.3rem; }
+
+.fasiliteter { display: flex; flex-wrap: wrap; gap: 12px; padding: 0; list-style: none; }
+
+.fasiliteter li {
+  padding: 10px 15px;
+  background: #edf3ee;
+  border-radius: 6px;
+  color: #234b3a;
+}
+
+.bestilling-info { margin-top: 30px; padding: 18px; background: #f5f1eb; border-radius: 8px; }
+
+.footer { padding: 25px; background: #234b3a; color: white; text-align: center; }
+
+@media (max-width: 800px) {
+  .hytte-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 550px) {
+  .navbar { padding: 18px 5%; }
+  .hytte-grid { grid-template-columns: 1fr; }
+  .hero { padding: 45px 6%; }
+  .hytteoversikt { padding: 45px 6%; }
 }

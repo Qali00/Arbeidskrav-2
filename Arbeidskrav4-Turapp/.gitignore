@@ -22,9 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-hyttedata-typescript/
-
-/app.ts
-/app.js
-/hytter.json
