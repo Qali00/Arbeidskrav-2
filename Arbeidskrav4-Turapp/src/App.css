@@ -77,18 +77,25 @@
   box-shadow: 0 5px 22px rgba(0,0,0,.08);
 }
 
-.hytte-bilde, .detalj-bilde {
-  min-height: 190px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 5rem;
-  color: white;
+.hytte-bilde {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
 }
 
-.fjell { background: linear-gradient(145deg, #9bb9ae, #496b5a); }
-.skog { background: linear-gradient(145deg, #a5b58b, #3e6047); }
-.sjo { background: linear-gradient(145deg, #a6cbd0, #477f88); }
+.detalj-bilde {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.detalj-bilde {
+  min-height: 300px;
+  border-radius: 12px;
+}
 
 .kort-innhold { padding: 22px; }
 
